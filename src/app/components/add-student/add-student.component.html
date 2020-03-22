@@ -1,0 +1,64 @@
+<form [formGroup]="studentForm" (ngSubmit)="addStudent()" class="needs-validation" novalidate>
+    <div formGroupName="student">
+
+        <div class="form-group">
+            <label for="StudentNumber">Student Number</label>
+            <input type="text" class="form-control" formControlName="studentNumber" id="StudentNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName" id="FirstName" required>
+        </div>
+        <div class="form-group">
+            <label for="MiddleName">Middle Name</label>
+            <input type="text" class="form-control" formControlName="middleName" id="MiddleName">
+        </div>
+        <div class="form-group">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName" id="LastName" required>
+        </div>
+        <div class="form-group">
+            <label for="GPA">GPA</label>
+            <input type="text" class="form-control" formControlName="cgpa" id="GPA" required>
+        </div>
+        <div class="form-group">
+            <label for="datepicker">Enrollment Date</label>
+            <input type="date" id="datepicker" formControlName="enrollmentDate" class="form-control" required>
+            <!--                            <input data-provide="datepicker" class="form-control" id="validationCustom05">-->
+        </div>
+        <!--                        <p>Date: <input type="text" id="datepicker"></p>-->
+        <div class="form-group">
+            <label for="International">International</label>
+            <!--                            <input id="International" type="checkbox" name="isPresent" value="false" th:field="*{international}"  th:checked="${true}"/>-->
+            <select id="International" formControlName="international" class="form-control" required>
+                <option selected [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
+        </div>
+        <!--                        <button type="submit" class="btn btn-primary">Submit</button>-->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</form>

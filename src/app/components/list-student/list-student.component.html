@@ -1,0 +1,45 @@
+<div class="container">
+    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter"><a
+            [routerLink]="['/add']">Add New Student</a></button>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">GPA</th>
+            <th scope="col">Enrollment Date</th>
+            <th scope="col">International</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="studentLength == 0">No Student data available</tr>
+        <tr class="table-dark" *ngFor="let student of allStudents; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{student.studentNumber}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.middleName}}</td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.cgpa}}</td>
+            <td>{{student.enrollmentDate}}</td>
+            <td *ngIf="student.international; else other_content">Yes</td>
+            <ng-template #other_content>
+                <td>No</td>
+            </ng-template>
+
+            <td>
+                <a class="btn btn-primary" href="@{/editStudent/{id}(id=${student.studentId})}"> Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="@{/deleteStudent/{id}(id=${student.studentId})}"> Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
